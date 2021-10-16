@@ -17,3 +17,15 @@ def check_float(value):
         raise TypeError('The value must be a float')
     else:
         return value
+
+def check_list(value):
+    if type(value) != type([]):
+        raise TypeError('The value must be a list')
+    else:
+        return value
+
+def check_dict(value):
+    if type(value) != type({}):
+        raise TypeError('The value must be a dictionary')
+    else:
+        return value

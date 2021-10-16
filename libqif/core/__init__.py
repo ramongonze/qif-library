@@ -2,7 +2,7 @@
 channels, hyper-distributions and the g-vulnerability framework.
 """
 
-import core.secrets
+from core.secrets import Secrets
 import core.channel
 import core.hyper
 import core.gvulnerability
