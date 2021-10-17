@@ -1,7 +1,7 @@
 """QIF channels."""
 
-from util.probability import check_prob_distribution
-from util.types import check_list, check_numpy_array
+from libqif.util.probability import check_prob_distribution
+from libqif.util.types import check_list, check_numpy_array
 from numpy import arange
 
 class Channel:

@@ -2,7 +2,7 @@
 channels, hyper-distributions and the g-vulnerability framework.
 """
 
-from core.secrets import Secrets
-import core.channel
-import core.hyper
-import core.gvulnerability
+from libqif.core.secrets import Secrets
+from libqif.core.channel import Channel
+from libqif.core.hyper import Hyper
+from libqif.core.gvulnerability import Gain
