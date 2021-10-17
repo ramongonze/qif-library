@@ -11,7 +11,7 @@ class Secrets:
 
         Parameters
         ----------
-        secrets : set
+        secrets : list
             Secrets labels.
 
         prob : list, numpy.ndarray
