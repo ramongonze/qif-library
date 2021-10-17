@@ -6,7 +6,7 @@ from numpy import array
 
 class Secrets:
     
-    def __init__(self, secrets, prob):
+    def __init__(self, secrets, prior):
         """Set of secrets.
 
         Parameters
@@ -14,11 +14,11 @@ class Secrets:
         secrets : list
             Secrets labels.
 
-        prob : list, numpy.ndarray
-            Array of probability distributions. prob[i] is the probability of
-            secret with i-th label happen.
+        prior : list, numpy.ndarray
+            Prior distribution on the set of secrets. prior[i] is the
+            probability of secret with i-th label beeing the real secret.
         """
         self.labels = check_list(secrets)
         self.num_secrets = len(secrets)
-        check_prob_distribution(prob)
-        self.prob = array(prob)
+        check_prob_distribution(prior)
+        self.prior = array(prior)
