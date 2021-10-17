@@ -7,6 +7,20 @@ class Hyper:
     def __init__(self, channel):
         """Hyper-distribution.
 
+        Attributes
+        ----------
+        channel : core.Chanel
+            Channel. 
+        
+        joint : numpy.ndarray
+            Matrix of joint distribution.
+
+        outer : numpy.ndarray
+            Outer distribution.
+
+        inners : numpy.ndarray
+            Matrix of inner distributions. 
+
         Parameters
         ----------
         channel : core.Channel

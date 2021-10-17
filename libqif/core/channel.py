@@ -9,6 +9,20 @@ class Channel:
     def __init__(self, secrets, outputs, channel):
         """QIF channel. 
 
+        Attributes
+        ----------
+        secrets : core.Secrets
+            Set of secrets.
+
+        outputs_labels : list
+            Channel outputs labels.
+
+        num_ouputs : int
+            Number of channel's outputs.
+
+        matrix : numpy.ndarray
+            Channel matrix.
+
         Parameters
         ----------
         secrets : core.Secrets
