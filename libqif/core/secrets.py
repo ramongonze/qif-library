@@ -20,4 +20,5 @@ class Secrets:
         """
         self.labels = check_list(secrets)
         self.num_secrets = len(secrets)
-        self.prob = array(check_prob_distribution(prob))
+        check_prob_distribution(prob)
+        self.prob = array(prob)
