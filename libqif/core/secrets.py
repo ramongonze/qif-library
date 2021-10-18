@@ -48,6 +48,9 @@ class Secrets:
         """Check if the size of the list of labels is the same of the 
         number of elements in the prior distribution.
         """
+        if len(secrets) < 2:
+            raise Exception('The set of secrets must contain at least 2 elements')
+        
         if len(secrets) != len(prior):
             raise Exception('The size of label\'s list is different from ' +
                             'the number of elements in the prior distribution')
