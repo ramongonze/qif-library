@@ -15,7 +15,7 @@ class Channel:
         secrets : core.Secrets
             Set of secrets.
 
-        outputs_labels : list
+        outputs : list
             Channel outputs labels.
 
         num_ouputs : int
@@ -39,7 +39,7 @@ class Channel:
         self._check_sizes(secrets, outputs, channel)
         self._check_channel_matrix(channel)
         self.secrets = secrets
-        self.outputs_labels = outputs
+        self.outputs = outputs
         self.matrix = array(channel)
         self.num_outputs = len(outputs)
 
@@ -55,15 +55,22 @@ class Channel:
                             '(list of lists or a numpy.ndarray with 2 dimensions)')
     
     def _check_sizes(self, secrets, outputs, channel):
-        if secrets.num_secrets != channel.shape[0]:
+        if secrets.num_secrets != len(channel):
             raise Exception('The number of rows in channel matrix must be the ' +
                             'same as the number of secrets') 
 
-        if len(outputs) != channel.shape[1]:
+        if len(outputs) != len(channel[0]):
             raise Exception('The number of columns in channel matrix must be ' +
                             'the same as the number of outputs (second parameter)')
+        
+        if len(outputs) < 1:
+            raise Exception('The channel must have at least one output')
+
+        for i in arange(secrets.num_secrets):
+            if len(channel[i]) < 0:
+                raise Exception('There is an empty row in the channel matrix')
 
     def _check_channel_matrix(self, channel):        
         # Check if each line of the channel matrix is a probability distribution
-        for i in arange(channel.shape[0]):
+        for i in arange(len(channel)):
             check_prob_distribution(channel[i])
