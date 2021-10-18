@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>libqif.core &mdash; QIF Library 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="libqif.util" href="util.html" />
+    <link rel="prev" title="QIF Library’s documentation" href="../../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> QIF Library
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Packages:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">libqif.core</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#secrets-class">Secrets class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#channel-class">Channel class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hyper-class">Hyper class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gain-class">Gain class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="util.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">libqif.util</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QIF Library</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><code class="xref py py-mod docutils literal notranslate"><span class="pre">libqif.core</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-libqif.core">
+<span id="libqif-core"></span><h1><a class="reference internal" href="#module-libqif.core" title="libqif.core"><code class="xref py py-mod docutils literal notranslate"><span class="pre">libqif.core</span></code></a><a class="headerlink" href="#module-libqif.core" title="Permalink to this headline">¶</a></h1>
+<p>Core package containing the basic conceptions of QIF such as secrets,
+channels, hyper-distributions and the g-vulnerability framework.</p>
+<section id="secrets-class">
+<h2>Secrets class<a class="headerlink" href="#secrets-class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="libqif.core.Secrets">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Secrets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/secrets.html#Secrets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Secrets" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Secrets.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/secrets.html#Secrets.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Secrets.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class used to represent a set of secrets. To create an instance of
+this class it is necessary a set of labels and a probability distribution
+to be set as the prior distribution on the set of secrets.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Secrets.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#libqif.core.Secrets.labels" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of secrets’ labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list, numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Secrets.num_secrets">
+<span class="sig-name descname"><span class="pre">num_secrets</span></span><a class="headerlink" href="#libqif.core.Secrets.num_secrets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of secrets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Secrets.prior">
+<span class="sig-name descname"><span class="pre">prior</span></span><a class="headerlink" href="#libqif.core.Secrets.prior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prior distribution on the set of secrets. <code class="code docutils literal notranslate"><span class="pre">prior[i]</span></code> is the
+probability of secret named <code class="code docutils literal notranslate"><span class="pre">labels[i]</span></code> beeing the real secret.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>secrets</strong> (<em>list</em>) – Secrets labels.</p></li>
+<li><p><strong>prior</strong> (<em>list</em><em>, </em><em>numpy.ndarray</em>) – Prior distribution on the set of secrets. prior[i] is the
+probability of secret named labels[i] beeing the real secret.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="channel-class">
+<h2>Channel class<a class="headerlink" href="#channel-class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="libqif.core.Channel">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/channel.html#Channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Channel" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Channel.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/channel.html#Channel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Channel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class used to represent a channel. To create an instance of this
+class it is necessary to have an instance of <a class="reference internal" href="#libqif.core.Secrets" title="libqif.core.Secrets"><code class="xref py py-class docutils literal notranslate"><span class="pre">Secrets</span></code></a> class
+and a channel matrix C <span class="math notranslate nohighlight">\(n{\times}m\)</span> where <span class="math notranslate nohighlight">\(n\)</span> is the number
+of secrets, <span class="math notranslate nohighlight">\(m\)</span> is the number of outputs in the channel and
+<code class="code docutils literal notranslate"><span class="pre">C[x][y]</span></code> is the conditional probability <span class="math notranslate nohighlight">\(p(y|x)\)</span> of the
+channel outputs <span class="math notranslate nohighlight">\(y\)</span> when the value of the secret is <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Channel.secrets">
+<span class="sig-name descname"><span class="pre">secrets</span></span><a class="headerlink" href="#libqif.core.Channel.secrets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set of secrets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#libqif.core.Secrets" title="libqif.core.Secrets">core.Secrets</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Channel.outputs">
+<span class="sig-name descname"><span class="pre">outputs</span></span><a class="headerlink" href="#libqif.core.Channel.outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of channel outputs labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Channel.num_ouputs">
+<span class="sig-name descname"><span class="pre">num_ouputs</span></span><a class="headerlink" href="#libqif.core.Channel.num_ouputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of outputs in the channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Channel.matrix">
+<span class="sig-name descname"><span class="pre">matrix</span></span><a class="headerlink" href="#libqif.core.Channel.matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Channel matrix where <code class="code docutils literal notranslate"><span class="pre">C[x][y]</span></code> is the conditional probability
+<span class="math notranslate nohighlight">\(p(y|x)\)</span> of the channel outputs <span class="math notranslate nohighlight">\(y\)</span> when the value of
+the secret is <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list, numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>secrets</strong> (<a class="reference internal" href="#libqif.core.Secrets" title="libqif.core.Secrets"><em>core.Secrets</em></a>) – Secrets object.</p></li>
+<li><p><strong>outputs</strong> (<em>list</em>) – Outputs labels.</p></li>
+<li><p><strong>channel</strong> (<em>numpy.ndarray</em>) – Channel matrix. Each line must be a probability distribution.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="hyper-class">
+<h2>Hyper class<a class="headerlink" href="#hyper-class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="libqif.core.Hyper">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Hyper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/hyper.html#Hyper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Hyper" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Hyper.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/hyper.html#Hyper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Hyper.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hyper-distribution. To create an instance of this class it is
+class it is necessary to have an instance of <a class="reference internal" href="#libqif.core.Channel" title="libqif.core.Channel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Channel</span></code></a>
+class. Once created an instance of <a class="reference internal" href="#libqif.core.Hyper" title="libqif.core.Hyper"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyper</span></code></a>, the constructor
+generates the joint, outer and inner distributions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Hyper.channel">
+<span class="sig-name descname"><span class="pre">channel</span></span><a class="headerlink" href="#libqif.core.Hyper.channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Channel object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#libqif.core.Channel" title="libqif.core.Channel">core.Channel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Hyper.joint">
+<span class="sig-name descname"><span class="pre">joint</span></span><a class="headerlink" href="#libqif.core.Hyper.joint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix of joint distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Hyper.outer">
+<span class="sig-name descname"><span class="pre">outer</span></span><a class="headerlink" href="#libqif.core.Hyper.outer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Outer distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Hyper.inners">
+<span class="sig-name descname"><span class="pre">inners</span></span><a class="headerlink" href="#libqif.core.Hyper.inners" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix of inner distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Hyper.num_posteriors">
+<span class="sig-name descname"><span class="pre">num_posteriors</span></span><a class="headerlink" href="#libqif.core.Hyper.num_posteriors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of posterior distributions resulted by reducing the
+hyper-distribution, i.e., remove columns that contains only
+zeros and merge columns which one of them a linear combination
+of the other.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>channel</strong> (<a class="reference internal" href="#libqif.core.Channel" title="libqif.core.Channel"><em>core.Channel</em></a>) – Channel object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="gain-class">
+<h2>Gain class<a class="headerlink" href="#gain-class" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="libqif.core.Gain">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Gain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gfunction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Gain.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gfunction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gain functions. To create an instance of this class it is necessary
+to have an instance of <a class="reference internal" href="#libqif.core.Secrets" title="libqif.core.Secrets"><code class="xref py py-class docutils literal notranslate"><span class="pre">Secrets</span></code></a> class and a gain function,
+that can be a matrix G <span class="math notranslate nohighlight">\(w{\times}n\)</span> where <span class="math notranslate nohighlight">\(w\)</span> is the
+number of actions, <span class="math notranslate nohighlight">\(n\)</span> is the number of secrets and
+<code class="code docutils literal notranslate"><span class="pre">G[w][x]</span></code> is the gain the adversary gets taking the action
+<code class="code docutils literal notranslate"><span class="pre">w</span></code> when the value of the secret is <code class="code docutils literal notranslate"><span class="pre">x</span></code>. Instead of using
+a gain function matrix, it is possible to pass as argument a pointer
+to a function that has two input paramerts (action w and secret x) and
+outputs a real value.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Gain.secrets">
+<span class="sig-name descname"><span class="pre">secrets</span></span><a class="headerlink" href="#libqif.core.Gain.secrets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Secrets object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#libqif.core.Secrets" title="libqif.core.Secrets">core.Secrets</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Gain.actions">
+<span class="sig-name descname"><span class="pre">actions</span></span><a class="headerlink" href="#libqif.core.Gain.actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of actions’ labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Gain.num_actions">
+<span class="sig-name descname"><span class="pre">num_actions</span></span><a class="headerlink" href="#libqif.core.Gain.num_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of actions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Gain.gain">
+<span class="sig-name descname"><span class="pre">gain</span></span><a class="headerlink" href="#libqif.core.Gain.gain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gain function matrix. <code class="code docutils literal notranslate"><span class="pre">gain[w][x]</span></code> is the gain the adversary
+gets when he takes the action of index <code class="code docutils literal notranslate"><span class="pre">w</span></code> (that has the
+label <code class="code docutils literal notranslate"><span class="pre">actions[w]</span></code>) when the secret is the one from index
+<code class="code docutils literal notranslate"><span class="pre">x</span></code> (and has the label <code class="code docutils literal notranslate"><span class="pre">secrets.labels[x]</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>secrets</strong> (<a class="reference internal" href="#libqif.core.Secrets" title="libqif.core.Secrets"><em>core.Secrets</em></a>) – Set of secrets.</p></li>
+<li><p><strong>actions</strong> (<em>list</em>) – Set of actions.</p></li>
+<li><p><strong>gfunction</strong> (<em>list</em><em>, </em><em>numpy.ndarray</em><em>, </em><em>pointer to a function</em>) – A 2d matrix or a pointer to a function.
+If the value is a matrix, its shape must match with the actions
+and secrets sets size.
+If the value is a pointer to a function, the function must have
+2 input parameters (w,x), where w is the index of an element from
+the set of actions and x is an index of an element from the set
+of secrets.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Gain.leakage">
+<span class="sig-name descname"><span class="pre">leakage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hyper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain.leakage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain.leakage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the additive and multiplicative leakage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyper</strong> (<a class="reference internal" href="#libqif.core.Hyper" title="libqif.core.hyper.Hyper"><em>core.hyper.Hyper</em></a>) – Hyper-distribution</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>add_leakage, mult_leakage</strong> – Additive and multiplicative leakage</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float, float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Gain.posterior_vulnerability">
+<span class="sig-name descname"><span class="pre">posterior_vulnerability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hyper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain.posterior_vulnerability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain.posterior_vulnerability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Posterior <span class="math notranslate nohighlight">\(g\)</span>-vulnerability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>hyper</strong> (<a class="reference internal" href="#libqif.core.Hyper" title="libqif.core.Hyper"><em>core.Hyper</em></a>) – Hyper-distribution.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>posterior_vulnerability</strong> – Posterior <span class="math notranslate nohighlight">\(g\)</span>-vulnerability.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Gain.prior_vulnerability">
+<span class="sig-name descname"><span class="pre">prior_vulnerability</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain.prior_vulnerability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain.prior_vulnerability" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prior <span class="math notranslate nohighlight">\(g\)</span>-vulnerability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>prior_vulnerability</strong> – Prior <span class="math notranslate nohighlight">\(g\)</span>-vulnerability.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../index.html" class="btn btn-neutral float-left" title="QIF Library’s documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="util.html" class="btn btn-neutral float-right" title="libqif.util" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Ramon Gonçalves Gonze.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

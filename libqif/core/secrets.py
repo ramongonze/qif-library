@@ -7,19 +7,21 @@ from numpy import array
 class Secrets:
     
     def __init__(self, secrets, prior):
-        """Set of secrets.
+        """Class used to represent a set of secrets. To create an instance of
+        this class it is necessary a set of labels and a probability distribution
+        to be set as the prior distribution on the set of secrets.
 
         Attributes
         ----------
-        labels : list
-            List of secret's labels.
+        labels : list, numpy.ndarray
+            List of secrets' labels.
 
         num_secrets : int
             Number of secrets.
 
         prior : numpy.ndarray
-            Prior distribution on the set of secrets. prior[i] is the
-            probability of secret named labels[i] beeing the real secret.
+            Prior distribution on the set of secrets. :code:`prior[i]` is the
+            probability of secret named :code:`labels[i]` beeing the real secret.
 
         Parameters
         ----------

@@ -3,10 +3,15 @@
 from numpy import arange
 
 def check_prob_distribution(prob):
-    """Chech wheter the vector is a probability distribution or not.
+    """Chech wheter an array is a probability distribution or not.
     All the values must be in the interval [0,1] and they must sum up to 1.
-    It raises an error if the array is not a probability distribution or
+    It raises an exception if the array is not a probability distribution or
     does nothing if it is a valid probability distribution.
+
+    Parameters
+    ----------
+    prob : list, numpy.ndarray
+        Array containing a probability distribution.
     """
 
     epsilon = 0.000001 # Used to compare probability distributions
