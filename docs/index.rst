@@ -11,6 +11,15 @@ secrets, channels, and the :math:`g`-vulnerability framework. The library is
 object oriented and the main functionalities are described in the documentation
 of each class.
 
+Usage
+-----
+
+To use the library follow these steps:
+   1. Clone the repository at `<http://github.com/ramongonze/qif-library>`_
+   2. In the terminal, go to the repository's folder and type :code:`pip install ./`
+
+Examples
+--------
 Here are some examples of usage: ::
    
    from libqif.core.secrets import Secrets
