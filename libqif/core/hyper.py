@@ -1,5 +1,7 @@
 """Hyper-distributions."""
 
+from libqif.core.secrets import Secrets
+from libqif.core.channel import Channel
 from numpy import array, arange, zeros
 from numpy import delete as npdelete
 
@@ -32,12 +34,16 @@ class Hyper:
         channel : core.Channel
             Channel.
         """
-
+        self._check_types(channel)
         self.channel = channel
         self.joint = self._generate_joint_distribution()
         self.outer, self.inners = self._generate_posteriors()
         self._reduce_hyper()
         self.num_posteriors = len(self.outer)
+
+    def _check_types(self, channel):
+        if type(channel) != type(Channel(Secrets(['x1','x2'], [1,0]), ['y1'], array([[1],[1]]))):
+            raise TypeError('The parameter \'channel\' must be a core.channel.Channel object')
 
     def _generate_joint_distribution(self):
         joint = []
