@@ -2,44 +2,29 @@
 
 from numpy import array
 
-def check_int(value):
-    if type(value) != type(1):
-        raise TypeError('The value must be an integer')
-    else:
-        return value
+def is_int(value):
+    return type(value) == type(1)
 
-def check_string(value):
-    if type(value) != type('string'):
-        raise TypeError('The value must be a string')
-    else:
-        return value
+def is_float(value):
+    return type(value) == type(1.0)
 
-def check_float(value):
-    if type(value) != type(1.0):
-        raise TypeError('The value must be a float')
-    else:
-        return value
+def is_string(value):
+    return type(value) == type('string')
 
-def check_list(value):
-    if type(value) != type([]):
-        raise TypeError('The value must be a list')
-    else:
-        return value
+def is_list(value):
+    return type(value) == type([])
 
-def check_dict(value):
-    if type(value) != type(dict()):
-        raise TypeError('The value must be a dictionary')
-    else:
-        return value
+def is_dict(value):
+    return type(value) == type(dict())
 
-def check_set(value):
-    if type(value) != type(set()):
-        raise TypeError('The value must be a set')
-    else:
-        return value
+def is_set(value):
+    return type(value) == type(set())
 
-def check_numpy_array(value):
-    if type(value) != type(array([])):
-        raise TypeError('The value must be a numpy array')
-    else:
-        return value
+def is_numpy_array(value):
+    return type(value) == type(array([]))
+
+def is_2d_matrix(value):
+    return type(value) == type(array([])) and value.ndim == 2
+
+def is_function(value):
+    return type(value) == type(lambda x : None)
