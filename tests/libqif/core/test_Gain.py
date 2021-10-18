@@ -14,13 +14,13 @@ class TestGain(unittest.TestCase):
             [0.75, 0.25],
             [0.25, 0.75]
         ]))
-        self.gain1 = Gain(self.secrets1, ['w1','w2','w3','w4','w5'], np.array([
+        self.gain1 = Gain(self.secrets1, ['w1','w2','w3','w4','w5'], [
             [-1.0,  1.0],
             [ 0.0,  0.5],
             [ 0.4,  0.1],
             [ 0.8, -0.9],
             [ 0.1,  0.2]
-        ]))
+        ])
 
         # Example 5.1 from the book The Science of Quantitative Information Flow
         self.secrets2 = Secrets(['x1','x2','x3','x4','x5'], [9/10,1/40,1/40,1/40,1/40])
@@ -55,5 +55,26 @@ class TestGain(unittest.TestCase):
         self.assertLess(self.gain2.prior_vulnerability() - 9/10, self.epsilon)
         self.assertLess(self.gain3.prior_vulnerability() - 1/2, self.epsilon)
         self.assertLess(self.gain3.posterior_vulnerability(Hyper(self.channel3)) - 5/8, self.epsilon)
-        # self.assertLess(self.gain4.prior_vulnerability() - 99/100, self.epsilon)
-        # self.assertLess(self.gain4.posterior_vulnerability(Hyper(self.channel4)), self.epsilon)
+        self.assertLess(self.gain4.prior_vulnerability() - 99/100, self.epsilon)
+        self.assertLess(self.gain4.posterior_vulnerability(Hyper(self.channel4)) - 99/100, self.epsilon)
+
+        gain = Gain(self.secrets1, ['w1','w2'], lambda w,x : 1 if w == x else 0)
+        np.testing.assert_array_equal(gain.gain, np.identity(2))
+
+    def test_invalid_gains(self):
+        with self.assertRaises(Exception):
+            Gain(self.secrets1, [], lambda x : x)
+        with self.assertRaises(Exception):
+            Gain(self.secrets1, [], np.identity(2))
+        with self.assertRaises(Exception):
+            Gain(self.secrets1, ['w1','w2'], [[],[]])
+        with self.assertRaises(Exception):
+            Gain(self.secrets1, ['w1','w2'], np.array([]))
+        with self.assertRaises(Exception):
+            Gain(self.secrets1, ['w1','w2'], [])
+        with self.assertRaises(Exception):
+            Gain(self.secrets1, ['w1','w2'], lambda x : x)
+        with self.assertRaises(Exception):
+            Gain(self.secrets1, ['w1','w2'], lambda x : 1)
+        with self.assertRaises(Exception):
+            Gain(1, ['w1','w2'], np.identity(2))
