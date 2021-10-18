@@ -1,5 +1,5 @@
-from libqif.core.channel import Channel
 from libqif.core.secrets import Secrets
+from libqif.core.channel import Channel
 import numpy as np
 import unittest
 import os
