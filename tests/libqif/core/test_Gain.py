@@ -53,6 +53,7 @@ class TestGain(unittest.TestCase):
         self.assertLess(self.gain1.prior_vulnerability() - 0.4, self.epsilon)
         self.assertLess(self.gain1.posterior_vulnerability(Hyper(self.channel1)) - 0.5575, self.epsilon)
         self.assertLess(self.gain2.prior_vulnerability() - 9/10, self.epsilon)
+        self.assertLess(self.gain2.posterior_vulnerability(Hyper(self.channel2)) - 37/40, self.epsilon)
         self.assertLess(self.gain3.prior_vulnerability() - 1/2, self.epsilon)
         self.assertLess(self.gain3.posterior_vulnerability(Hyper(self.channel3)) - 5/8, self.epsilon)
         self.assertLess(self.gain4.prior_vulnerability() - 99/100, self.epsilon)
@@ -78,3 +79,21 @@ class TestGain(unittest.TestCase):
             Gain(self.secrets1, ['w1','w2'], lambda x : 1)
         with self.assertRaises(Exception):
             Gain(1, ['w1','w2'], np.identity(2))
+
+    def test_leakage(self):
+        add_leakage, mult_leakage = self.gain1.leakage(Hyper(self.channel1))
+        self.assertLess(add_leakage - (0.5575 - 0.4), self.epsilon)
+        self.assertLess(add_leakage - (0.5575/0.4), self.epsilon)
+
+        add_leakage, mult_leakage = self.gain2.leakage(Hyper(self.channel2))
+        self.assertLess(add_leakage - (37/40 - 9/10), self.epsilon)
+        self.assertLess(add_leakage - ((37/40)/(9/10)), self.epsilon)
+        
+        add_leakage, mult_leakage = self.gain3.leakage(Hyper(self.channel3))
+        self.assertLess(add_leakage - (5/8 - 1/2), self.epsilon)
+        self.assertLess(add_leakage - ((5/8)/(1/2)), self.epsilon)
+
+        add_leakage, mult_leakage = self.gain4.leakage(Hyper(self.channel4))
+        self.assertLess(add_leakage, self.epsilon)
+        self.assertLess(add_leakage - 1, self.epsilon)
+        
