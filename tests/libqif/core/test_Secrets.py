@@ -78,34 +78,50 @@ class TestSecrets(unittest.TestCase):
     def test_invalid_labels_size(self):
         for i in np.arange(len(self.priors1)):
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels2, self.priors1[i])
+                Secrets(self.labels2, self.priors1[i])
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels3, self.priors1[i])
+                Secrets(self.labels3, self.priors1[i])
         
         for i in np.arange(len(self.priors2)):
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels1, self.priors2[i])
+                Secrets(self.labels1, self.priors2[i])
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels3, self.priors2[i])
+                Secrets(self.labels3, self.priors2[i])
 
         for i in np.arange(len(self.priors3)):
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels1, self.priors3[i])
+                Secrets(self.labels1, self.priors3[i])
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels2, self.priors3[i])
+                Secrets(self.labels2, self.priors3[i])
             
     def test_invalid_prior_distribution(self):
         for prior in self.invalid_priors1:
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels1, prior)
+                Secrets(self.labels1, prior)
         
         for prior in self.invalid_priors2:
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels2, prior)
+                Secrets(self.labels2, prior)
         
         for prior in self.invalid_priors3:
             with self.assertRaises(Exception):
-                secrets = Secrets(self.labels3, prior)
+                Secrets(self.labels3, prior)
+
+    def test_invalid_labels_type(self):
+        with self.assertRaises(Exception):
+            Secrets('invalid type', [1])
+        with self.assertRaises(Exception):
+            Secrets(42, [1])
+        with self.assertRaises(Exception):
+            Secrets({'x1':1,'x2':2}, [1])
+        
+    def test_invalid_prior_type(self):
+        with self.assertRaises(Exception):
+            Secrets(['x1','x2','x3'], 42)
+        with self.assertRaises(Exception):
+            Secrets(['x1','x2','x3'], 'string')
+        with self.assertRaises(Exception):
+            Secrets(['x1','x2'], {'x1':0.5, 'x2':0.5})
 
 if __name__ == '__main__':
     unittest.main()
