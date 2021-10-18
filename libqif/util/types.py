@@ -1,6 +1,6 @@
 """Methods to check types of variables."""
 
-from numpy import array
+from numpy import array, arange
 
 def is_int(value):
     return type(value) == type(1)
@@ -23,7 +23,17 @@ def is_set(value):
 def is_numpy_array(value):
     return type(value) == type(array([]))
 
-def is_2d_matrix(value):
+def is_2d_list_matrix(value):
+    if type(value) != type([]):
+        return False
+    
+    for i in arange(len(value)):
+        if type(value[i]) != type([]):
+            return False
+    
+    return True
+
+def is_2d_numpy_matrix(value):
     return type(value) == type(array([])) and value.ndim == 2
 
 def is_function(value):
