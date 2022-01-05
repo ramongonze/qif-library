@@ -39,6 +39,26 @@ class Secrets:
         check_prob_distribution(prior) # Check if the array is a probability distribution
         self.prior = array(prior)
 
+    def update_prior(self, prior):
+        """Update prior distribution array.
+        The number of elements in the array must be the same as the current number of secrets.
+
+        Parameters
+        ----------
+        prior : list, numpy.ndarray
+            Prior distribution on the set of secrets. prior[i] is the
+            probability of secret named labels[i] beeing the real secret.
+        """
+
+        if not is_list(prior) and not is_numpy_array(prior):
+            raise TypeError('The parameter \'prior\' must be a list or a numpy.ndarray')
+
+        if len(prior) != self.num_secrets:
+            raise Exception('The array size is different from the number of secrets')
+
+        check_prob_distribution(prior) # Check if the array is a probability distribution
+        self.prior = array(prior)
+    
     def _check_types(self, secrets, prior):
         if not is_list(secrets):
             raise TypeError('The parameter \'secrets\' must be a list')

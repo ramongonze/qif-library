@@ -86,6 +86,86 @@ class TestChannel(unittest.TestCase):
             Channel(self.secrets1, 42, self.channel1)
         with self.assertRaises(Exception):
             Channel(lambda x : 'x' + str(x), ['y1','y2','y3','y4'], self.channel1)
+ 
+    def test_valid_prior_updates(self):
+        ch1 = Channel(self.secrets1, ['y1','y2','y3','y4'], self.channel1)
+        ch2 = Channel(self.secrets2, ['y1','y2','y3','y4'], self.channel2)
+
+        priors1 = [
+            [1,0,0],
+            [0,1,0],
+            [0,0,1],
+            [1/3,1/3,1/3],
+            [1/2,1/2,0],
+            [1/2,0,1/2],
+            [0,1/2,1/2],
+        ]
+
+        for prior in priors1:
+            ch1.update_prior(prior)
+            self.assertEqual(ch1.secrets.num_secrets, 3)
+            np.testing.assert_array_equal(ch1.secrets.prior, prior)
+
+        priors2 = [
+            [1,0,0,0],
+            [0,1,0,0],
+            [0,0,1,0],
+            [0,0,0,1],
+            [1/4,1/4,1/4,1/4],
+            [1/2,1/2,0,0],
+            [1/2,0,1/2,0],
+            [0,1/2,1/2,0],
+            [0,0,1/2,1/2]
+        ]
+
+        for prior in priors2:
+            ch2.update_prior(prior)
+            self.assertEqual(ch2.secrets.num_secrets, 4)
+            np.testing.assert_array_equal(ch2.secrets.prior, prior)
+    
+    def test_invalid_prior_update(self):
+        ch1 = Channel(self.secrets1, ['y1','y2','y3','y4'], self.channel1)
+        ch2 = Channel(self.secrets2, ['y1','y2','y3','y4'], self.channel2)
+
+        invalid_priors1 = [
+            [0,0,0],
+            [1,1,1],
+            [0.5,0.3,0],
+            [1.5,0,-0.5],
+            [-0.5,-0.5,-1],
+            [0.5,0.5,-1]
+        ]
+
+        invalid_priors2 = [
+            [0,0,0,0],
+            [1,1,1,1],
+            [0.5,0.3,0,0],
+            [1.5,0,-0.5,0],
+            [-0.5,-0.5,-1,-1],
+            [0.5,0.5,-1,0]
+        ]
+
+        for prior in invalid_priors1:
+            with self.assertRaises(Exception):
+                ch1.update_prior(prior)
+        
+        for prior in invalid_priors2:
+            with self.assertRaises(Exception):
+                ch2.update_prior(prior)
+
+        with self.assertRaises(Exception):
+            ch1.update_prior(42)
+        with self.assertRaises(Exception):
+            ch1.update_prior('string')
+        with self.assertRaises(Exception):
+            ch1.update_prior({'x1':0.5, 'x2':0.5})
+            
+        with self.assertRaises(Exception):
+            ch2.update_prior(42)
+        with self.assertRaises(Exception):
+            ch2.update_prior('string')
+        with self.assertRaises(Exception):
+            ch2.update_prior({'x1':0.5, 'x2':0.5})
 
 if __name__ == '__main__':
     unittest.main()

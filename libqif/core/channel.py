@@ -50,6 +50,19 @@ class Channel:
         self.matrix = array(channel)
         self.num_outputs = len(outputs)
 
+    def update_prior(self, prior):
+        """Update the prior distribution on set of secrets.
+        The number of secrets must match the current number of rows of the channel.
+
+        Parameters
+        ----------
+        prior : list, numpy.ndarray
+            Prior distribution on the set of secrets. prior[i] is the
+            probability of secret named labels[i] beeing the real secret.
+        """
+
+        self.secrets.update_prior(prior)
+    
     def _check_types(self, secrets, outputs, channel):
         if type(secrets) != type(Secrets(['x1','x2'], [1,0])):
             raise TypeError('The parameter \'secrets\' must be a core.secrets.Secrets object')

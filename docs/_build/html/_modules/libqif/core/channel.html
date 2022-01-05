@@ -117,6 +117,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">matrix</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_outputs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Channel.update_prior"><a class="viewcode-back" href="../../../modules/libqif/core.html#libqif.core.Channel.update_prior">[docs]</a>    <span class="k">def</span> <span class="nf">update_prior</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prior</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update the prior distribution on set of secrets.</span>
+<span class="sd">        The number of secrets must match the current number of rows of the channel.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        prior : list, numpy.ndarray</span>
+<span class="sd">            Prior distribution on the set of secrets. prior[i] is the</span>
+<span class="sd">            probability of secret named labels[i] beeing the real secret.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">secrets</span><span class="o">.</span><span class="n">update_prior</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span></div>
+    
     <span class="k">def</span> <span class="nf">_check_types</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">secrets</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">channel</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">secrets</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">(</span><span class="n">Secrets</span><span class="p">([</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;The parameter </span><span class="se">\&#39;</span><span class="s1">secrets</span><span class="se">\&#39;</span><span class="s1"> must be a core.secrets.Secrets object&#39;</span><span class="p">)</span>

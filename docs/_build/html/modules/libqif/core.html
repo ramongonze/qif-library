@@ -133,6 +133,19 @@ probability of secret named labels[i] beeing the real secret.</p></li>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Secrets.update_prior">
+<span class="sig-name descname"><span class="pre">update_prior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/secrets.html#Secrets.update_prior"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Secrets.update_prior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update prior distribution array.
+The number of elements in the array must be the same as the current number of secrets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prior</strong> (<em>list</em><em>, </em><em>numpy.ndarray</em>) – Prior distribution on the set of secrets. prior[i] is the
+probability of secret named labels[i] beeing the real secret.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -204,6 +217,19 @@ the secret is <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <li><p><strong>outputs</strong> (<em>list</em>) – Outputs labels.</p></li>
 <li><p><strong>channel</strong> (<em>numpy.ndarray</em>) – Channel matrix. Each line must be a probability distribution.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Channel.update_prior">
+<span class="sig-name descname"><span class="pre">update_prior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/channel.html#Channel.update_prior"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Channel.update_prior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the prior distribution on set of secrets.
+The number of secrets must match the current number of rows of the channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prior</strong> (<em>list</em><em>, </em><em>numpy.ndarray</em>) – Prior distribution on the set of secrets. prior[i] is the
+probability of secret named labels[i] beeing the real secret.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -285,6 +311,19 @@ of the other.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>channel</strong> (<a class="reference internal" href="#libqif.core.Channel" title="libqif.core.Channel"><em>core.Channel</em></a>) – Channel object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="libqif.core.Hyper.update_prior">
+<span class="sig-name descname"><span class="pre">update_prior</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/hyper.html#Hyper.update_prior"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Hyper.update_prior" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the prior distribution on set of secrets.
+The number of secrets must match the current number of rows of the channel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prior</strong> (<em>list</em><em>, </em><em>numpy.ndarray</em>) – Prior distribution on the set of secrets. prior[i] is the
+probability of secret named labels[i] beeing the real secret.</p>
 </dd>
 </dl>
 </dd></dl>

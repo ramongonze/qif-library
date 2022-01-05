@@ -45,6 +45,23 @@ class Hyper:
         self._reduce_hyper()
         self.num_posteriors = len(self.outer)
 
+    def update_prior(self, prior):
+        """Update the prior distribution on set of secrets.
+        The number of secrets must match the current number of rows of the channel.
+
+        Parameters
+        ----------
+        prior : list, numpy.ndarray
+            Prior distribution on the set of secrets. prior[i] is the
+            probability of secret named labels[i] beeing the real secret.
+        """
+
+        self.channel.update_prior(prior)
+        self.joint = self._generate_joint_distribution()
+        self.outer, self.inners = self._generate_posteriors()
+        self._reduce_hyper()
+        self.num_posteriors = len(self.outer)
+    
     def _check_types(self, channel):
         if type(channel) != type(Channel(Secrets(['x1','x2'], [1,0]), ['y1'], array([[1],[1]]))):
             raise TypeError('The parameter \'channel\' must be a core.channel.Channel object')
