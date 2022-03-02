@@ -16,7 +16,10 @@ To use the library:
 1. Clone this repository.
 2. In the terminal, go to the repository's folder and type `pip install ./`
 
-To generate the HTML documentation (be sure docs requirements are already installed):
+## Documentation
+The documentation is available in HTML format in the following path: `docs/_build/html/index.html`
+
+To compile the HTML documentation (be sure docs requirements are already installed):
 1. Go to the folder `docs`.
 2. Type `make html`.
 
