@@ -60,7 +60,7 @@ class TestGain(unittest.TestCase):
         self.assertLess(self.gain4.posterior_vulnerability(Hyper(self.channel4)) - 99/100, self.epsilon)
 
         gain = Gain(self.secrets1, ['w1','w2'], lambda w,x : 1 if w == x else 0)
-        np.testing.assert_array_equal(gain.gain, np.identity(2))
+        np.testing.assert_array_equal(gain.matrix, np.identity(2))
 
     def test_invalid_gains(self):
         with self.assertRaises(Exception):
