@@ -22,4 +22,4 @@ def check_prob_distribution(prob):
     prob_sum = sum(prob)
     if prob_sum < 1-epsilon or prob_sum > 1+epsilon:
         raise ValueError('All the values must sum up to 1 (with an error of ' +
-                         'at most 1^(-6)')
+                         'at most 10^(-6)')
