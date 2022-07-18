@@ -1,11 +1,13 @@
 import setuptools
 
 install_requires = [
+    'numpy >= 1.21.5'
 ]
 
 docs_require = [
     'sphinx >= 1.4',
-    'sphinx-rtd-theme'
+    'sphinx-theme >= 1.0',
+    'sphinx-rtd-theme >= 1.0'
 ]
 
 setuptools.setup(
