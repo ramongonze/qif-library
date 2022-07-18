@@ -38,7 +38,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Packages:</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Packages:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">libqif.core</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#secrets-class">Secrets class</a></li>
@@ -81,7 +81,7 @@ channels, hyper-distributions and the g-vulnerability framework.</p>
 <h2>Secrets class<a class="headerlink" href="#secrets-class" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="libqif.core.Secrets">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Secrets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/secrets.html#Secrets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Secrets" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Secrets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/secrets.html#Secrets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Secrets" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="libqif.core.Secrets.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prior</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/secrets.html#Secrets.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Secrets.__init__" title="Permalink to this definition">¶</a></dt>
@@ -154,7 +154,7 @@ probability of secret named labels[i] beeing the real secret.</p>
 <h2>Channel class<a class="headerlink" href="#channel-class" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="libqif.core.Channel">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/channel.html#Channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Channel" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/channel.html#Channel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Channel" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="libqif.core.Channel.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/channel.html#Channel.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Channel.__init__" title="Permalink to this definition">¶</a></dt>
@@ -242,7 +242,7 @@ probability of secret named labels[i] beeing the real secret.</p>
 <h2>Hyper class<a class="headerlink" href="#hyper-class" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="libqif.core.Hyper">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Hyper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/hyper.html#Hyper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Hyper" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Hyper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/hyper.html#Hyper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Hyper" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="libqif.core.Hyper.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/hyper.html#Hyper.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Hyper.__init__" title="Permalink to this definition">¶</a></dt>
@@ -336,10 +336,10 @@ probability of secret named labels[i] beeing the real secret.</p>
 <h2>Gain class<a class="headerlink" href="#gain-class" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="libqif.core.Gain">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Gain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gfunction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">libqif.core.</span></span><span class="sig-name descname"><span class="pre">Gain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gfunction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py method">
 <dt class="sig sig-object py" id="libqif.core.Gain.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gfunction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain.__init__" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">secrets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gfunction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_loss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/libqif/core/gvulnerability.html#Gain.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#libqif.core.Gain.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gain functions. To create an instance of this class it is necessary
 to have an instance of <a class="reference internal" href="#libqif.core.Secrets" title="libqif.core.Secrets"><code class="xref py py-class docutils literal notranslate"><span class="pre">Secrets</span></code></a> class and a gain function,
 that can be a matrix G <span class="math notranslate nohighlight">\(w{\times}n\)</span> where <span class="math notranslate nohighlight">\(w\)</span> is the
@@ -392,6 +392,18 @@ label <code class="code docutils literal notranslate"><span class="pre">actions[
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="libqif.core.Gain.is_loss">
+<span class="sig-name descname"><span class="pre">is_loss</span></span><a class="headerlink" href="#libqif.core.Gain.is_loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flag to indicate whether it is a loss function, i.e., when the adversary wants to
+minimize the loss instead of maximize his gain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Bool</p>
 </dd>
 </dl>
 </dd></dl>
