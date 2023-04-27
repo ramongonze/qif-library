@@ -1,18 +1,18 @@
-"""g-vulnerability"""
+"""l-uncertainty"""
 
 from libqif.util.types import is_list, is_function, is_2d_list_matrix, is_2d_numpy_matrix
 from libqif.core.secrets import Secrets
 from numpy import arange, zeros, array
-from numpy import max as npmax
+from numpy import min as npmin
 
-class GVulnerability:
+class LUncertainty:
 
-    def __init__(self, secrets, actions, gfunction):
-        """:math:`g`-vulnerability. To create an instance of this class it is necessary 
-        to have an instance of :py:class:`.Secrets` class and a gain function, 
+    def __init__(self, secrets, actions, lfunction):
+        """:math:`\ell`-uncertainty. To create an instance of this class it is necessary 
+        to have an instance of :py:class:`.Secrets` class and a loss function, 
         that can be a matrix or a pointer to a function. The matrix G must be 
         G :math:`w{\\times}n` where :math:`w` is the number of actions, :math:`n` is the 
-        number of secrets and :code:`G[w][x]` is the adversary's gain when she takes the action 
+        number of secrets and :code:`G[w][x]` is the adversary's loss when she takes the action 
         :code:`w` and the secret's value is :code:`x`. The function must have 
         two input parameters (action w and secret x, in this order) and outputs a real value.
 
@@ -28,7 +28,7 @@ class GVulnerability:
             Number of actions.
 
         matrix : numpy.ndarray
-            Gain function matrix. :code:`gain[w][x]` is the adversary's gain
+            Loss function matrix. :code:`loss[w][x]` is the adversary's loss
             when she takes the action of index :code:`w` (that has the
             label :code:`actions[w]`) and the secret is the one from index
             :code:`x` (and has the label :code:`secrets.labels[x]`).
@@ -41,8 +41,8 @@ class GVulnerability:
         actions : list
             Set of actions.
 
-        gfunction : list, numpy.ndarray, pointer to a function
-            A 2d matrix or a pointer to a gain function.
+        lfunction : list, numpy.ndarray, pointer to a function
+            A 2d matrix or a pointer to a loss function.
             If the value is a matrix, its shape must match with the actions
             and secrets sets size.
             If the value is a pointer to a function, the function must have
@@ -51,26 +51,26 @@ class GVulnerability:
             of secrets.
         """
 
-        self._check_types(secrets, actions, gfunction)
-        self._check_sizes(secrets, actions, gfunction)
+        self._check_types(secrets, actions, lfunction)
+        self._check_sizes(secrets, actions, lfunction)
         self.secrets = secrets
         self.actions = actions
         self.num_actions = len(self.actions)
         self.matrix = None
-        self._set_gain_function_matrix(gfunction)        
+        self._set_loss_function_matrix(lfunction)        
 
-    def prior_vulnerability(self):
-        """Prior vulnerability.
+    def prior_uncertainty(self):
+        """Prior uncertainty.
         
         Returns
         -------
-        prior_vulnerability : float
-            Prior vulnerability.
+        prior_uncertainty : float
+            Prior uncertainty.
         """
-        return npmax(self.secrets.prior @ self.matrix.T)
+        return npmin(self.secrets.prior @ self.matrix.T)
     
-    def posterior_vulnerability(self, hyper):
-        """Posterior vulnerability.
+    def posterior_uncertainty(self, hyper):
+        """Posterior uncertainty.
 
         Parameters
         ----------
@@ -79,15 +79,15 @@ class GVulnerability:
 
         Returns
         -------
-        posterior_vulnerability : float
-            Posterior vulnerability.
+        posterior_uncertainty : float
+            Posterior uncertainty.
         """
 
         if hyper.channel.secrets.num_secrets != self.secrets.num_secrets:
-            raise Exception('The number of secrets in the gain function is' +
+            raise Exception('The number of secrets in the loss function is' +
                             'different from the one in the hyper-distribution.')
 
-        return npmax(self.matrix @ hyper.joint, axis=0).sum()
+        return npmin(self.matrix @ hyper.joint, axis=0).sum()
 
     def leakage(self, hyper):
         """Calculates the additive and multiplicative leakages.
@@ -103,8 +103,8 @@ class GVulnerability:
             Additive and multiplicative leakage
         """
 
-        prior_v = self.prior_vulnerability()
-        posterior_v = self.posterior_vulnerability(hyper)
+        prior_v = self.prior_uncertainty()
+        posterior_v = self.posterior_uncertainty(hyper)
 
         add_leakage = posterior_v - prior_v
         
@@ -115,61 +115,61 @@ class GVulnerability:
 
         return add_leakage, mult_leakage
 
-    def _check_types(self, secrets, actions, gfunction):
+    def _check_types(self, secrets, actions, lfunction):
         if type(secrets) != type(Secrets(['x1','x2'], [1,0])):
             raise TypeError('The parameter \'secrets\' must be a core.Secrets object')
         
         if not is_list(actions) and not is_numpy_array(actions):
             raise TypeError('The parameter \'actions\' must be a list or a numpy.ndarray')
 
-        if not is_2d_list_matrix(gfunction) and not is_2d_numpy_matrix(gfunction) and not is_function(gfunction):
-            raise TypeError('The parameter \'gfunction\' must be a 2d matrix or a pointer to a function')
+        if not is_2d_list_matrix(lfunction) and not is_2d_numpy_matrix(lfunction) and not is_function(lfunction):
+            raise TypeError('The parameter \'lfunction\' must be a 2d matrix or a pointer to a function')
 
-    def _check_sizes(self, secrets, actions, gfunction):
-        if not is_function(gfunction) and len(actions) != len(gfunction):
-            raise Exception('The number of rows in the gain function matrix ' +
+    def _check_sizes(self, secrets, actions, lfunction):
+        if not is_function(lfunction) and len(actions) != len(lfunction):
+            raise Exception('The number of rows in the loss function matrix ' +
                             'must have the same number of actions in the ' +
                             'labels list')
 
         if len(actions) < 1:
             raise Exception('The set of actions must have at least one element')
         
-        if not is_function(gfunction):
+        if not is_function(lfunction):
             for i in arange(len(actions)):
-                if len(gfunction[i]) < 0:
-                    raise Exception('There is an empty row in the gain matrix')
+                if len(lfunction[i]) < 0:
+                    raise Exception('There is an empty row in the loss matrix')
 
-        if not is_function(gfunction) and secrets.num_secrets != len(gfunction[0]):
-            raise Exception('The number of columns in the gain function matrix ' +
+        if not is_function(lfunction) and secrets.num_secrets != len(lfunction[0]):
+            raise Exception('The number of columns in the loss function matrix ' +
                             'must be the same as the number of secrets')
 
-    def _build_gain_matrix(self, gfunction):
-        """Given a gain function build the matrix G."""
+    def _build_loss_matrix(self, lfunction):
+        """Given a loss function build the matrix G."""
         self.matrix = zeros((self.num_actions, self.secrets.num_secrets))
         
         for w in arange(self.num_actions):
             for x in arange(self.secrets.num_secrets):
-                self.matrix[w][x] = gfunction(w,x)
+                self.matrix[w][x] = lfunction(w,x)
     
-    def _check_gain_matrix(self, matrix):
-        """Check if a gain function matrix is valid."""
+    def _check_loss_matrix(self, matrix):
+        """Check if a loss function matrix is valid."""
         if (self.num_actions != len(matrix) or
             self.secrets.num_secrets != len(matrix[0])):
-            raise Exception('Gain function matrix shape does not match with ' +
+            raise Exception('Loss function matrix shape does not match with ' +
                             'the set of secrets or the set of actions size.')
 
-    def _set_gain_function_matrix(self, gfunction):
+    def _set_loss_function_matrix(self, lfunction):
         try:
-            if is_function(gfunction):
-                # Generate the gain matrix for all actions and secrets
-                self._build_gain_matrix(gfunction)
+            if is_function(lfunction):
+                # Generate the loss matrix for all actions and secrets
+                self._build_loss_matrix(lfunction)
             else:
-                # Copy the gain matrix
-                self._check_gain_matrix(gfunction)
-                self.matrix = array(gfunction).copy()
+                # Copy the loss matrix
+                self._check_loss_matrix(lfunction)
+                self.matrix = array(lfunction).copy()
         except:
             raise Exception(
-                'Invalid gain function. It must be a pointer to a function ' +
+                'Invalid loss function. It must be a pointer to a function ' +
                 'that has 2 input parameters (action\'s index and ' +
                 'secret\'s index) or a 2d matrix.'
             )

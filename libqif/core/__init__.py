@@ -5,4 +5,5 @@ channels, hyper-distributions and the g-vulnerability framework.
 from libqif.core.secrets import Secrets
 from libqif.core.channel import Channel
 from libqif.core.hyper import Hyper
-from libqif.core.gvulnerability import Gain
+from libqif.core.gvulnerability import GVulnerability
+from libqif.core.luncertainty import LUncertainty
