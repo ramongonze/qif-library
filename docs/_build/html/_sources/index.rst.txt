@@ -25,7 +25,7 @@ Here are some examples of usage: ::
    from libqif.core.secrets import Secrets
    from libqif.core.channel import Channel
    from libqif.core.hyper import Hyper
-   from libqif.core.gvulnerability import Gain
+   from libqif.core.gvulnerability import GVulnerability
    import numpy as np
 
    secrets = Secrets(['x1','x2','x3','x4'], [1/3, 1/3, 0, 1/3])
@@ -36,7 +36,7 @@ Here are some examples of usage: ::
       [1/4, 1/4, 1/2,   0]
    ]))
    hyper = Hyper(channel)
-   gain = Gain(secrets, ['w1','w2','w3','w4'], np.identity(4)) # Bayes vulnerability
+   gain = GVulnerability(secrets, ['w1','w2','w3','w4'], np.identity(4)) # Bayes vulnerability
 
    print('Prior distribution: ' + str(secrets.prior))
    print('Channel:\n' + str(channel.matrix))

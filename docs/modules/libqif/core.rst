@@ -29,9 +29,18 @@ Hyper class
 
 ----------------------------
 
-Gain class
-----------
-.. autoclass:: Gain
+GVulnerability class
+--------------------
+.. autoclass:: GVulnerability
+   :members:
+   :special-members: __init__
+   :inherited-members:
+
+----------------------------
+
+LUncertainty class
+------------------
+.. autoclass:: LUncertainty
    :members:
    :special-members: __init__
    :inherited-members:
